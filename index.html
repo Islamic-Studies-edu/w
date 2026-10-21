@@ -1,0 +1,2426 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة كلية الدراسات الإسلامية | الأصالة والتجديد</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&family=Reem+Kufi:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============ المتغيرات ============ */
+:root {
+  --bg-primary: #f8f4ec;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-soft: #f0e9dc;
+  --text-primary: #0f2e1f;
+  --text-secondary: #4a5a4a;
+  --accent: #0d3b2e;
+  --accent-mid: #1a5e44;
+  --accent-light: #2e8b64;
+  --gold: #b8933f;
+  --gold-light: #d4af5a;
+  --gold-pale: #e8d9b0;
+  --shadow: rgba(13, 59, 46, 0.12);
+  --shadow-strong: rgba(13, 59, 46, 0.25);
+  --border: #e0d5c0;
+  --nav-bg: linear-gradient(135deg, #0d3b2e 0%, #1a5e44 100%);
+  --nav-text: #f8f4ec;
+  --hero-bg: linear-gradient(135deg, #0d3b2e 0%, #1a5e44 50%, #2e8b64 100%);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0a1810;
+  --bg-secondary: #132a1f;
+  --bg-card: #1a3528;
+  --bg-soft: #0f2418;
+  --text-primary: #f0e9dc;
+  --text-secondary: #a8b0a8;
+  --accent: #4caf50;
+  --accent-mid: #66bb6a;
+  --accent-light: #81c784;
+  --gold: #d4af5a;
+  --gold-light: #e8c86a;
+  --gold-pale: #2a3f2f;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --shadow-strong: rgba(0, 0, 0, 0.7);
+  --border: #2a4a38;
+  --nav-bg: linear-gradient(135deg, #0a1810 0%, #132a1f 100%);
+  --nav-text: #f0e9dc;
+  --hero-bg: linear-gradient(135deg, #0a1810 0%, #132a1f 50%, #1a3528 100%);
+}
+
+/* ============ إعادة تعيين ============ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Cairo', 'Tahoma', sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.4s, color 0.4s;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(184, 147, 63, 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(13, 59, 46, 0.04) 0%, transparent 40%);
+}
+
+/* ============ زخرفة إسلامية احترافية ============ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23b8933f' stroke-width='0.6' stroke-opacity='0.10'%3E%3Cpath d='M60 0L75 45L120 60L75 75L60 120L45 75L0 60L45 45Z'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3Cpath d='M60 30L60 90M30 60L90 60'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="dark"] body::before {
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af5a' stroke-width='0.6' stroke-opacity='0.08'%3E%3Cpath d='M60 0L75 45L120 60L75 75L60 120L45 75L0 60L45 45Z'/%3E%3Ccircle cx='60' cy='60' r='30'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3Cpath d='M60 30L60 90M30 60L90 60'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ============ شاشة الدخول ============ */
+#loginScreen {
+  position: fixed;
+  inset: 0;
+  background: var(--hero-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  flex-direction: column;
+  padding: 20px;
+}
+
+#loginScreen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af5a' stroke-width='0.8' stroke-opacity='0.15'%3E%3Cpath d='M100 0L125 75L200 100L125 125L100 200L75 125L0 100L75 75Z'/%3E%3Ccircle cx='100' cy='100' r='50'/%3E%3Ccircle cx='100' cy='100' r='30'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.98);
+  padding: 55px 45px;
+  border-radius: 24px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(212, 175, 90, 0.3);
+  text-align: center;
+  max-width: 440px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  border-top: 6px solid var(--gold);
+}
+
+.login-box::before {
+  content: '﷽';
+  font-family: 'Amiri', serif;
+  font-size: 32px;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.login-box .logo-icon {
+  font-size: 48px;
+  color: var(--gold);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.login-box h1 {
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 24px;
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.login-box .subtitle {
+  color: #666;
+  margin-bottom: 30px;
+  font-size: 13px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid #e0d5c0;
+  border-radius: 12px;
+  background: #faf8f4;
+  color: #0f2e1f;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 4px;
+  transition: all 0.3s;
+  font-family: 'Cairo', sans-serif;
+}
+
+.login-box input:focus {
+  outline: none;
+  border-color: var(--gold);
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(184, 147, 63, 0.15);
+}
+
+.login-box button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 15px;
+  background: linear-gradient(135deg, #0d3b2e, #1a5e44);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Cairo', sans-serif;
+  letter-spacing: 1px;
+}
+
+.login-box button:hover {
+  background: linear-gradient(135deg, #1a5e44, #2e8b64);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(13, 59, 46, 0.3);
+}
+
+.login-error {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 12px;
+  display: none;
+  font-weight: 600;
+}
+
+/* ============ شريط التنقل الأفقي ============ */
+.main-nav {
+  background: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 6px 30px var(--shadow-strong);
+  min-height: 72px;
+  border-bottom: 3px solid var(--gold);
+  flex-wrap: wrap;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 19px;
+  font-weight: 700;
+  padding: 12px 0;
+  color: var(--gold-light);
+  letter-spacing: 0.5px;
+}
+
+.nav-brand .brand-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(212, 175, 90, 0.15);
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: var(--gold-light);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.nav-links > a {
+  color: var(--nav-text);
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+  position: relative;
+  white-space: nowrap;
+  font-family: 'Cairo', sans-serif;
+}
+
+.nav-links > a:hover,
+.nav-links > a.active {
+  background: rgba(212, 175, 90, 0.2);
+  color: var(--gold-light);
+}
+
+.nav-links > a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  background: var(--gold);
+  border-radius: 3px;
+}
+
+/* قائمة منسدلة */
+.dropdown {
+  position: relative;
+}
+
+.dropdown > a {
+  color: var(--nav-text);
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.dropdown > a::after {
+  content: '▼';
+  font-size: 9px;
+  transition: transform 0.3s;
+}
+
+.dropdown:hover > a {
+  background: rgba(212, 175, 90, 0.2);
+  color: var(--gold-light);
+}
+
+.dropdown:hover > a::after {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-card);
+  min-width: 220px;
+  border-radius: 14px;
+  box-shadow: 0 15px 40px var(--shadow-strong);
+  padding: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--gold);
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: var(--text-primary);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: var(--bg-soft);
+  color: var(--accent);
+  padding-right: 22px;
+}
+
+/* ============ المحتوى ============ */
+.content-area {
+  padding: 0;
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 72px);
+}
+
+.page-section {
+  display: none;
+  animation: fadeIn 0.5s ease;
+  padding: 40px 30px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.page-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============ Hero Section ============ */
+.hero {
+  background: var(--hero-bg);
+  padding: 70px 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 4px solid var(--gold);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23d4af5a' stroke-width='0.8' stroke-opacity='0.18'%3E%3Cpath d='M80 0L100 60L160 80L100 100L80 160L60 100L0 80L60 60Z'/%3E%3Ccircle cx='80' cy='80' r='40'/%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero .bismillah {
+  font-family: 'Amiri', serif;
+  font-size: 28px;
+  color: var(--gold-light);
+  margin-bottom: 20px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero h1 {
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 42px;
+  color: #fff;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 0 3px 15px rgba(0,0,0,0.3);
+  line-height: 1.3;
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--gold-pale);
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.hero-divider {
+  width: 120px;
+  height: 3px;
+  background: var(--gold);
+  margin: 0 auto 30px;
+  border-radius: 3px;
+  position: relative;
+}
+
+.hero-divider::before,
+.hero-divider::after {
+  content: '✦';
+  position: absolute;
+  top: -10px;
+  color: var(--gold-light);
+  font-size: 16px;
+}
+
+.hero-divider::before { right: -25px; }
+.hero-divider::after { left: -25px; }
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.hero-stat {
+  text-align: center;
+}
+
+.hero-stat .num {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--gold-light);
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.hero-stat .lbl {
+  font-size: 13px;
+  color: var(--gold-pale);
+  margin-top: 5px;
+}
+
+/* ============ عناوين الأقسام ============ */
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-header .ornament {
+  color: var(--gold);
+  font-size: 22px;
+  margin-bottom: 10px;
+  letter-spacing: 15px;
+}
+
+.section-title {
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.section-divider {
+  width: 80px;
+  height: 3px;
+  background: var(--gold);
+  margin: 18px auto 0;
+  border-radius: 3px;
+  position: relative;
+}
+
+.section-divider::before {
+  content: '◆';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gold);
+  font-size: 12px;
+  background: var(--bg-primary);
+  padding: 0 8px;
+}
+
+/* ============ البطاقات ============ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 30px 25px;
+  box-shadow: 0 6px 25px var(--shadow);
+  border: 1px solid var(--border);
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+  background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M40 5L50 30L75 40L50 50L40 75L30 50L5 40L30 30Z' fill='%23b8933f' fill-opacity='0.12'/%3E%3C/svg%3E");
+  opacity: 0.6;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold), var(--accent));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px var(--shadow-strong);
+  border-color: var(--gold);
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+}
+
+.card-icon {
+  font-size: 42px;
+  margin-bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--bg-soft), var(--bg-card));
+  border: 2px solid var(--gold-pale);
+  border-radius: 16px;
+  transition: all 0.4s;
+  position: relative;
+  z-index: 1;
+}
+
+.card:hover .card-icon {
+  transform: rotate(-5deg) scale(1.05);
+  border-color: var(--gold);
+  background: linear-gradient(135deg, var(--gold-pale), var(--bg-card));
+}
+
+.card h3 {
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.card p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.7;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 15px;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+  position: relative;
+  z-index: 1;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s;
+  font-family: 'Cairo', sans-serif;
+}
+
+.btn-link:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+.btn-link.gold {
+  background: var(--gold);
+}
+
+.btn-link.gold:hover {
+  background: var(--gold-light);
+}
+
+.btn-link.danger {
+  background: #c0392b;
+}
+
+.btn-link.danger:hover {
+  background: #e74c3c;
+}
+
+.btn-link.outline {
+  background: transparent;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.btn-link.outline:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ============ بطاقات الفرق ============ */
+.years-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.year-card {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.year-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, var(--gold-pale), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.year-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold);
+  box-shadow: 0 15px 40px var(--shadow-strong);
+}
+
+.year-card:hover::before {
+  opacity: 0.3;
+}
+
+.year-card .year-num {
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 48px;
+  color: var(--gold);
+  font-weight: 700;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+
+.year-card h4 {
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-size: 18px;
+  position: relative;
+  z-index: 1;
+  font-family: 'Reem Kufi', sans-serif;
+}
+
+.year-card p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 1;
+}
+
+.year-details {
+  margin-top: 30px;
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  box-shadow: 0 6px 25px var(--shadow);
+}
+
+.year-details h3 {
+  color: var(--accent);
+  font-family: 'Reem Kufi', sans-serif;
+  margin-bottom: 20px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ============ قوائم الكتب/الشرح ============ */
+.list-item {
+  background: var(--bg-card);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid var(--border);
+  transition: all 0.3s;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.list-item:hover {
+  border-color: var(--gold);
+  transform: translateX(-5px);
+  box-shadow: 0 6px 20px var(--shadow-strong);
+}
+
+.list-item .item-icon {
+  font-size: 28px;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-soft);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.list-item .item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.list-item h4 {
+  color: var(--accent);
+  margin-bottom: 4px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.list-item p {
+  font-size: 12px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-item .item-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ============ البحث ============ */
+.search-bar {
+  width: 100%;
+  padding: 15px 22px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 15px;
+  margin-bottom: 25px;
+  transition: all 0.3s;
+  font-family: 'Cairo', sans-serif;
+}
+
+.search-bar:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(184, 147, 63, 0.1);
+}
+
+/* ============ الأيقونات العائمة ============ */
+.floating-icons {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 900;
+}
+
+.float-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px var(--shadow-strong);
+  transition: all 0.3s;
+  position: relative;
+}
+
+.float-btn:hover {
+  transform: scale(1.12) rotate(8deg);
+  background: linear-gradient(135deg, var(--accent-mid), var(--accent-light));
+  box-shadow: 0 12px 30px var(--shadow-strong);
+}
+
+.float-btn .tooltip {
+  position: absolute;
+  right: 72px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px var(--shadow-strong);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  border: 1px solid var(--gold);
+  font-family: 'Cairo', sans-serif;
+}
+
+.float-btn:hover .tooltip {
+  opacity: 1;
+}
+
+/* ============ النوافذ المنبثقة ============ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 15, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+  backdrop-filter: blur(6px);
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--bg-card);
+  border-radius: 22px;
+  padding: 35px;
+  max-width: 700px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+  border-top: 5px solid var(--gold);
+  position: relative;
+  animation: modalIn 0.35s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-box h2 {
+  color: var(--accent);
+  margin-bottom: 8px;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-box .modal-sub {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-bottom: 25px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  left: 18px;
+  background: var(--bg-soft);
+  border: none;
+  font-size: 20px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.modal-close:hover {
+  background: #e74c3c;
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.modal-box label {
+  display: block;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 15px;
+}
+
+.modal-box textarea,
+.modal-box input[type="text"],
+.modal-box input[type="url"],
+.modal-box select {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 14px;
+  transition: all 0.3s;
+  font-family: 'Cairo', sans-serif;
+}
+
+.modal-box textarea:focus,
+.modal-box input:focus,
+.modal-box select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 147, 63, 0.15);
+}
+
+.modal-box button.primary-btn {
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  color: #fff;
+  border: none;
+  padding: 13px 30px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s;
+  font-family: 'Cairo', sans-serif;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.modal-box button.primary-btn:hover {
+  background: linear-gradient(135deg, var(--accent-mid), var(--accent-light));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px var(--shadow-strong);
+}
+
+/* ============ النوتس ============ */
+.note-card {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  padding: 18px;
+  border-right: 4px solid var(--gold);
+  position: relative;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.note-card p {
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.note-card .note-date {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.note-card .note-delete {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(231, 76, 60, 0.1);
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.note-card .note-delete:hover {
+  background: #e74c3c;
+  color: #fff;
+}
+
+/* ============ AI ============ */
+.ai-chat {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 420px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+  padding: 8px;
+  background: var(--bg-soft);
+  border-radius: 14px;
+}
+
+.ai-msg {
+  padding: 14px 18px;
+  border-radius: 16px;
+  max-width: 85%;
+  font-size: 14px;
+  line-height: 1.8;
+  word-wrap: break-word;
+}
+
+.ai-msg.user {
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  color: #fff;
+  align-self: flex-start;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.ai-msg.bot {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  align-self: flex-end;
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.ai-input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.ai-input-row input {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.ai-input-row button {
+  padding: 13px 25px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: all 0.3s;
+  font-family: 'Cairo', sans-serif;
+  white-space: nowrap;
+}
+
+.ai-input-row button:hover {
+  background: linear-gradient(135deg, var(--accent-mid), var(--accent-light));
+}
+
+/* ============ لوحة التحكم ============ */
+.admin-panel {
+  background: var(--bg-card);
+  border-radius: 18px;
+  padding: 30px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 10px 40px var(--shadow-strong);
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 15px;
+}
+
+.admin-tab {
+  padding: 10px 20px;
+  background: var(--bg-soft);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Cairo', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.3s;
+}
+
+.admin-tab.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  color: #fff;
+}
+
+.admin-tab:hover:not(.active) {
+  background: var(--border);
+}
+
+.admin-section {
+  display: none;
+}
+
+.admin-section.active {
+  display: block;
+}
+
+.admin-form {
+  background: var(--bg-soft);
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  border: 1px dashed var(--gold);
+}
+
+.admin-form h4 {
+  color: var(--accent);
+  margin-bottom: 15px;
+  font-family: 'Reem Kufi', sans-serif;
+  font-size: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-row.full {
+  grid-template-columns: 1fr;
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ معلومات إضافية ============ */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+}
+
+.info-box {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-top: 4px solid var(--gold);
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: all 0.3s;
+}
+
+.info-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px var(--shadow-strong);
+}
+
+.info-box h3 {
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-size: 17px;
+  font-family: 'Reem Kufi', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.info-box p {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ============ إشعار ============ */
+.toast {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-30px);
+  background: linear-gradient(135deg, var(--accent), var(--accent-mid));
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 30px var(--shadow-strong);
+  opacity: 0;
+  transition: all 0.35s;
+  z-index: 9999;
+  pointer-events: none;
+  border: 2px solid var(--gold);
+  font-family: 'Cairo', sans-serif;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============ استجابة ============ */
+@media (max-width: 900px) {
+  .main-nav {
+    padding: 10px 15px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .nav-links {
+    justify-content: center;
+    width: 100%;
+  }
+  .nav-links > a,
+  .dropdown > a {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+  .hero h1 {
+    font-size: 28px;
+  }
+  .hero .bismillah {
+    font-size: 22px;
+  }
+  .section-title {
+    font-size: 24px;
+  }
+  .page-section {
+    padding: 30px 18px;
+  }
+  .floating-icons {
+    bottom: 15px;
+    left: 15px;
+    gap: 10px;
+  }
+  .float-btn {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+  .modal-box {
+    padding: 25px 20px;
+  }
+  .hero-stats {
+    gap: 25px;
+  }
+  .hero-stat .num {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: 5px 0;
+    display: none;
+  }
+  .dropdown.open .dropdown-menu {
+    display: block;
+  }
+  .dropdown > a::after {
+    content: '▼';
+  }
+  .dropdown.open > a::after {
+    transform: rotate(180deg);
+  }
+}
+
+/* ============ شريط تمرير ============ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-soft);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--accent), var(--gold));
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(var(--gold), var(--accent));
+}
+</style>
+</head>
+<body data-theme="light">
+
+<!-- ============ شاشة الدخول ============ -->
+<div id="loginScreen">
+  <div class="login-box">
+    <span class="logo-icon">🕌</span>
+    <h1>كلية الدراسات الإسلامية</h1>
+    <p class="subtitle">منصة الأصالة والتجديد العلمي</p>
+    <input type="password" id="passwordInput" placeholder="••••••••" autocomplete="off">
+    <button onclick="checkPassword()">دخول المنصة</button>
+    <p class="login-error" id="loginError">كلمة المرور غير صحيحة</p>
+  </div>
+</div>
+
+<!-- ============ الشريط الرئيسي الأفقي ============ -->
+<nav class="main-nav" id="mainNav">
+  <div class="nav-brand">
+    <div class="brand-icon">☪</div>
+    كلية الدراسات الإسلامية
+  </div>
+  <div class="nav-links" id="navLinks">
+    <a href="#" data-section="home" class="active">الرئيسية</a>
+    <div class="dropdown">
+      <a href="#">الفرق الدراسية</a>
+      <div class="dropdown-menu">
+        <a href="#" onclick="navigateTo('years'); showYearDetails(0); return false;">الفرقة الأولى</a>
+        <a href="#" onclick="navigateTo('years'); showYearDetails(1); return false;">الفرقة الثانية</a>
+        <a href="#" onclick="navigateTo('years'); showYearDetails(2); return false;">الفرقة الثالثة</a>
+        <a href="#" onclick="navigateTo('years'); showYearDetails(3); return false;">الفرقة الرابعة</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">الأبحاث</a>
+      <div class="dropdown-menu">
+        <a href="#" onclick="navigateTo('research'); return false;">كل الأبحاث</a>
+        <a href="#" onclick="navigateTo('research'); filterResearch('عقيدة'); return false;">أبحاث العقيدة</a>
+        <a href="#" onclick="navigateTo('research'); filterResearch('فقه'); return false;">أبحاث الفقه</a>
+        <a href="#" onclick="navigateTo('research'); filterResearch('تفسير'); return false;">أبحاث التفسير</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#">الدراسات العليا</a>
+      <div class="dropdown-menu">
+        <a href="#" onclick="navigateTo('postgrad'); return false;">نظرة عامة</a>
+        <a href="#" onclick="navigateTo('postgrad'); return false;">الماجستير</a>
+        <a href="#" onclick="navigateTo('postgrad'); return false;">الدكتوراه</a>
+        <a href="#" onclick="navigateTo('postgrad'); return false;">شروط القبول</a>
+      </div>
+    </div>
+    <a href="#" data-section="books">المكتبة</a>
+    <a href="#" data-section="explain">الشرح</a>
+    <a href="#" data-section="services">الخدمات</a>
+    <a href="#" data-section="about">عن الكلية</a>
+    <a href="#" data-section="admin" style="background: rgba(212,175,90,0.2); color: var(--gold-light);">⚙️ لوحة التحكم</a>
+  </div>
+</nav>
+
+<!-- ============ المحتوى ============ -->
+<main class="content-area">
+
+  <!-- الرئيسية -->
+  <section class="page-section active" id="section-home">
+    <div class="hero">
+      <div class="hero-content">
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+        <h1>منصة كلية الدراسات الإسلامية</h1>
+        <div class="hero-divider"></div>
+        <p>منصة علمية متكاملة تجمع بين الأصالة الإسلامية والتقنية الحديثة، تقدم لطلاب العلم الشرعي كل ما يحتاجونه من مناهج ومراجع وشروحات في مكان واحد</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num">4</div>
+            <div class="lbl">فرق دراسية</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">+50</div>
+            <div class="lbl">مادة علمية</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">+100</div>
+            <div class="lbl">مرجع وكتاب</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">24/7</div>
+            <div class="lbl">دعم ذكي</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding: 50px 30px; max-width: 1300px; margin: 0 auto;">
+      <div class="section-header">
+        <div class="ornament">✦ ❖ ✦</div>
+        <h2 class="section-title">أقسام المنصة</h2>
+        <p class="section-subtitle">تصفح كل ما تحتاجه من خدمات علمية وأكاديمية</p>
+        <div class="section-divider"></div>
+      </div>
+      <div class="cards-grid" id="homeCards"></div>
+    </div>
+  </section>
+
+  <!-- الفرق الدراسية -->
+  <section class="page-section" id="section-years">
+    <div class="section-header">
+      <div class="ornament">✦ ❖ ✦</div>
+      <h2 class="section-title">الفرق الدراسية</h2>
+      <p class="section-subtitle">اختر الفرقة لعرض المواد والمناهج والكتب</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="years-grid" id="yearsGrid"></div>
+    <div class="year-details" id="yearDetails" style="display:none;"></div>
+  </section>
+
+  <!-- الأبحاث -->
+  <section class="page-section" id="section-research">
+    <div class="section-header">
+      <div class="ornament">✦ ❖ ✦</div>
+      <h2 class="section-title">الأبحاث العلمية</h2>
+      <p class="section-subtitle">مكتبة الأبحاث والمراجع المعتمدة</p>
+      <div class="section-divider"></div>
+    </div>
+    <input type="text" class="search-bar" placeholder="🔍 ابحث عن بحث..." id="researchSearch" oninput="filterResearch()">
+    <div id="researchList"></div>
+  </section>
+
+  <!-- الدراسات العليا -->
+  <section class="page-section" id="section-postgrad">
+    <div class="section-header">
+      <div class="ornament">✦ ❖ ✦</div>
+      <h2 class="section-title">الدراسات العليا</h2>
+      <p class="section-subtitle">برامج الماجستير والدكتوراه</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="cards-grid" id="postgradGrid"></div>
+  </section>
+
+  <!-- المكتبة -->
+  <section class="page-section" id="section-books">
+    <div class="section-header">
+      <div class="ornament">✦ ❖ ✦</div>
+      <h2 class="section-title">المكتبة</h2>
+      <p class="section-subtitle">كتب الكلية والمذكرات والمراجع</p>
+      <div class="section-divider"></div>
+    </div>
+    <input type="text" class="search-bar" placeholder="🔍 ابحث عن كتاب..." id="bookSearch" oninput="filterBooks()">
+    <div id="booksList"></div>
+  </section>
+
+  <!-- الشرح -->
+  <section class="page-section" id="section-explain">
+    <div class="section-header">
+      <div class="ornament">✦ ❖ ✦</div>
+      <h2 class="section-title">قسم الشرح</h2>
+      <p class="section-subtitle">شروحات مرئية ومكتوبة للمواد الدراسية</p>
+      <div class="section-divider"></div>
+    </div>
+    <div id="explainList"></div>
+  </section>
+
+  <!-- الخدمات -->
+  <section class="page-section" id="section-services">
+    <div class="section-header">
+      <div class="ornament">✦ ❖ ✦</div>
+      <h2 class="section-title">الخدمات الطلابية</h2>
+      <p class="section-subtitle">خدمات متكاملة للطلاب والباحثين</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="info-grid" id="servicesGrid"></div>
+  </section>
+
+  <!-- عن الكلية -->
+  <section class="page-section" id="section-about">
+    <div class="section-header">
+      <div class="ornament">✦ ❖ ✦</div>
+      <h2 class="section-title">عن الكلية</h2>
+      <p class="section-subtitle">رؤيتنا ورسالتنا وأهدافنا</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-box">
+        <h3>🎯 رؤيتنا</h3>
+        <p>الريادة في تقديم تعليم إسلامي أصيل ومعاصر يجمع بين الأصالة والتجديد، وإعداد كوادر مؤهلة علمياً ومهنياً تخدم الإسلام والمجتمع.</p>
+      </div>
+      <div class="info-box">
+        <h3>📜 رسالتنا</h3>
+        <p>تقديم برامج أكاديمية متميزة في العلوم الإسلامية، وإثراء البحث العلمي، وخدمة المجتمع بقيم إسلامية راسخة.</p>
+      </div>
+      <div class="info-box">
+        <h3>🎯 أهدافنا</h3>
+        <p>تأهيل الطلاب علمياً وعملياً، تنمية البحث العلمي، تعزيز القيم الإسلامية والأخلاقية، ومواكبة التطور التقني في التعليم.</p>
+      </div>
+      <div class="info-box">
+        <h3>📞 تواصل معنا</h3>
+        <p>البريد: info@islamic-studies.edu<br>الهاتف: 0123456789<br>العنوان: المدينة الجامعية - كلية الدراسات الإسلامية</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- لوحة التحكم -->
+  <section class="page-section" id="section-admin">
+    <div class="section-header">
+      <div class="ornament">✦ ❖ ✦</div>
+      <h2 class="section-title">لوحة التحكم</h2>
+      <p class="section-subtitle">أضف وعدّل واحذف أي محتوى في المنصة</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="admin-panel">
+      <div class="admin-tabs">
+        <button class="admin-tab active" onclick="switchAdminTab('books')">📚 الكتب</button>
+        <button class="admin-tab" onclick="switchAdminTab('explain')">🎥 الشروحات</button>
+        <button class="admin-tab" onclick="switchAdminTab('research')">🔬 الأبحاث</button>
+        <button class="admin-tab" onclick="switchAdminTab('years')">📖 مواد الفرق</button>
+      </div>
+
+      <!-- إدارة الكتب -->
+      <div class="admin-section active" id="admin-books">
+        <div class="admin-form">
+          <h4>➕ إضافة كتاب جديد</h4>
+          <div class="form-row">
+            <div>
+              <label>اسم الكتاب</label>
+              <input type="text" id="bookTitle" placeholder="مثال: العقيدة الإسلامية">
+            </div>
+            <div>
+              <label>النوع</label>
+              <select id="bookType">
+                <option>كتاب</option>
+                <option>مذكرة</option>
+                <option>مرجع</option>
+                <option>دليل</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row full">
+            <div>
+              <label>رابط التحميل / القراءة</label>
+              <input type="url" id="bookUrl" placeholder="https://...">
+            </div>
+          </div>
+          <div class="form-row full">
+            <div>
+              <label>وصف مختصر (اختياري)</label>
+              <input type="text" id="bookDesc" placeholder="وصف الكتاب">
+            </div>
+          </div>
+          <button class="primary-btn" onclick="addBook()">إضافة الكتاب</button>
+        </div>
+        <h4 style="color:var(--accent);margin-bottom:15px;font-family:'Reem Kufi',sans-serif;">📋 الكتب الحالية</h4>
+        <div id="adminBooksList"></div>
+      </div>
+
+      <!-- إدارة الشروحات -->
+      <div class="admin-section" id="admin-explain">
+        <div class="admin-form">
+          <h4>➕ إضافة شرح جديد</h4>
+          <div class="form-row">
+            <div>
+              <label>عنوان الشرح</label>
+              <input type="text" id="explainTitle" placeholder="مثال: شرح العقيدة - الدرس الأول">
+            </div>
+            <div>
+              <label>المادة</label>
+              <input type="text" id="explainSubject" placeholder="مثال: العقيدة">
+            </div>
+          </div>
+          <div class="form-row full">
+            <div>
+              <label>رابط الشرح (فيديو أو ملف)</label>
+              <input type="url" id="explainUrl" placeholder="https://...">
+            </div>
+          </div>
+          <div class="form-row full">
+            <div>
+              <label>وصف مختصر</label>
+              <input type="text" id="explainDesc" placeholder="وصف الشرح">
+            </div>
+          </div>
+          <button class="primary-btn" onclick="addExplain()">إضافة الشرح</button>
+        </div>
+        <h4 style="color:var(--accent);margin-bottom:15px;font-family:'Reem Kufi',sans-serif;">📋 الشروحات الحالية</h4>
+        <div id="adminExplainList"></div>
+      </div>
+
+      <!-- إدارة الأبحاث -->
+      <div class="admin-section" id="admin-research">
+        <div class="admin-form">
+          <h4>➕ إضافة بحث جديد</h4>
+          <div class="form-row">
+            <div>
+              <label>عنوان البحث</label>
+              <input type="text" id="researchTitle" placeholder="عنوان البحث">
+            </div>
+            <div>
+              <label>الباحث / المؤلف</label>
+              <input type="text" id="researchAuthor" placeholder="اسم الباحث">
+            </div>
+          </div>
+          <div class="form-row full">
+            <div>
+              <label>رابط البحث</label>
+              <input type="url" id="researchUrl" placeholder="https://...">
+            </div>
+          </div>
+          <button class="primary-btn" onclick="addResearch()">إضافة البحث</button>
+        </div>
+        <h4 style="color:var(--accent);margin-bottom:15px;font-family:'Reem Kufi',sans-serif;">📋 الأبحاث الحالية</h4>
+        <div id="adminResearchList"></div>
+      </div>
+
+      <!-- إدارة مواد الفرق -->
+      <div class="admin-section" id="admin-years">
+        <div class="admin-form">
+          <h4>➕ إضافة مادة لفرقة</h4>
+          <div class="form-row">
+            <div>
+              <label>الفرقة</label>
+              <select id="yearSelect">
+                <option value="0">الفرقة الأولى</option>
+                <option value="1">الفرقة الثانية</option>
+                <option value="2">الفرقة الثالثة</option>
+                <option value="3">الفرقة الرابعة</option>
+              </select>
+            </div>
+            <div>
+              <label>اسم المادة</label>
+              <input type="text" id="subjectName" placeholder="مثال: العقيدة الإسلامية">
+            </div>
+          </div>
+          <div class="form-row full">
+            <div>
+              <label>رابط المادة (كتاب أو شرح) - اختياري</label>
+              <input type="url" id="subjectUrl" placeholder="https://...">
+            </div>
+          </div>
+          <button class="primary-btn" onclick="addSubject()">إضافة المادة</button>
+        </div>
+        <h4 style="color:var(--accent);margin-bottom:15px;font-family:'Reem Kufi',sans-serif;">📋 المواد الحالية</h4>
+        <div id="adminYearsList"></div>
+      </div>
+
+      <div style="margin-top:25px;padding:15px;background:var(--bg-soft);border-radius:12px;border-right:4px solid var(--gold);">
+        <p style="font-size:13px;color:var(--text-secondary);">
+          💡 <strong>ملاحظة:</strong> جميع التعديلات تُحفظ تلقائياً في متصفحك. لإعادة التعيين، استخدمي الزر التالي:
+        </p>
+        <button class="btn-link danger" style="margin-top:10px;" onclick="resetAll()">🔄 إعادة تعيين كل البيانات</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ الأيقونات العائمة ============ -->
+<div class="floating-icons">
+  <button class="float-btn" id="themeToggle" onclick="toggleTheme()">
+    🌙
+    <span class="tooltip">الوضع الليلي</span>
+  </button>
+  <button class="float-btn" onclick="openModal('booksModal')">
+    📚
+    <span class="tooltip">كتب الكلية</span>
+  </button>
+  <button class="float-btn" onclick="openAI()">
+    🤖
+    <span class="tooltip">المساعد الذكي</span>
+  </button>
+  <button class="float-btn" onclick="openNotes()">
+    📝
+    <span class="tooltip">النوتس اليومية</span>
+  </button>
+</div>
+
+<!-- ============ نافذة الكتب ============ -->
+<div class="modal-overlay" id="booksModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('booksModal')">✕</button>
+    <h2>📚 كتب الكلية والمذكرات</h2>
+    <p class="modal-sub">اضغط على أي كتاب لفتحه أو تحميله</p>
+    <div id="modalBooksList"></div>
+  </div>
+</div>
+
+<!-- ============ نافذة الذكاء الاصطناعي ============ -->
+<div class="modal-overlay" id="aiModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('aiModal')">✕</button>
+    <h2>🤖 المساعد الذكي</h2>
+    <p class="modal-sub">اسأل عن أي شيء في المنهج أو المنصة</p>
+    <div class="ai-chat" id="aiChat">
+      <div class="ai-msg bot">السلام عليكم ورحمة الله وبركاته! 🌙<br>أنا المساعد الذكي لمنصة كلية الدراسات الإسلامية. كيف يمكنني مساعدتك؟ يمكنك السؤال عن المواد، الأبحاث، الكتب، أو أي شيء في المنهج.</div>
+    </div>
+    <div class="ai-input-row">
+      <input type="text" id="aiInput" placeholder="اكتب سؤالك هنا..." onkeydown="if(event.key==='Enter')sendAI()">
+      <button onclick="sendAI()">إرسال</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ نافذة النوتس ============ -->
+<div class="modal-overlay" id="notesModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('notesModal')">✕</button>
+    <h2>📝 النوتس اليومية</h2>
+    <p class="modal-sub">دوّن ملاحظاتك اليومية بسهولة</p>
+    <textarea id="newNoteText" placeholder="اكتب ملاحظتك هنا..." rows="3"></textarea>
+    <button class="primary-btn" onclick="addNote()">➕ إضافة الملاحظة</button>
+    <div id="notesList" style="margin-top:20px;"></div>
+  </div>
+</div>
+
+<!-- ============ نافذة إضافة كتاب (من المكتبة) ============ -->
+<div class="modal-overlay" id="addBookQuickModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('addBookQuickModal')">✕</button>
+    <h2>➕ إضافة كتاب سريع</h2>
+    <p class="modal-sub">أضف كتاباً جديداً للمكتبة مباشرة</p>
+    <label>اسم الكتاب</label>
+    <input type="text" id="quickBookTitle" placeholder="اسم الكتاب">
+    <label>رابط الكتاب</label>
+    <input type="url" id="quickBookUrl" placeholder="https://...">
+    <label>النوع</label>
+    <select id="quickBookType">
+      <option>كتاب</option>
+      <option>مذكرة</option>
+      <option>مرجع</option>
+    </select>
+    <button class="primary-btn" onclick="addQuickBook()">إضافة</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ كلمة المرور ============ */
+const CORRECT_PASSWORD = 'aya@azhr';
+
+function checkPassword() {
+  const input = document.getElementById('passwordInput').value.trim();
+  const error = document.getElementById('loginError');
+  if (input === CORRECT_PASSWORD) {
+    document.getElementById('loginScreen').style.display = 'none';
+    showToast('مرحباً بك في منصة كلية الدراسات الإسلامية ☪');
+  } else {
+    error.style.display = 'block';
+    document.getElementById('passwordInput').value = '';
+    setTimeout(() => { error.style.display = 'none'; }, 3000);
+  }
+}
+
+document.getElementById('passwordInput').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') checkPassword();
+});
+
+/* ============ الوضع الليلي ============ */
+let isDark = false;
+function toggleTheme() {
+  isDark = !isDark;
+  document.body.setAttribute('data-theme', isDark ? 'dark' : 'light');
+  document.getElementById('themeToggle').innerHTML = (isDark ? '☀️' : '🌙') + '<span class="tooltip">' + (isDark ? 'الوضع النهاري' : 'الوضع الليلي') + '</span>';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+if (localStorage.getItem('theme') === 'dark') { isDark = false; toggleTheme(); }
+
+/* ============ التنقل ============ */
+function navigateTo(section) {
+  document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+  const target = document.getElementById('section-' + section);
+  if (target) target.classList.add('active');
+
+  const link = document.querySelector(`.nav-links a[data-section="${section}"]`);
+  if (link) link.classList.add('active');
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (section === 'admin') renderAdminLists();
+}
+
+document.querySelectorAll('.nav-links > a[data-section]').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigateTo(this.dataset.section);
+  });
+});
+
+/* ============ البيانات الافتراضية ============ */
+const DEFAULT_BOOKS = [
+  { id: 1, title: 'العقيدة الإسلامية - الفرقة الأولى', type: 'كتاب', url: '#', desc: 'كتاب العقيدة الشامل', icon: '📕' },
+  { id: 2, title: 'الفقه الشافعي - الجزء الأول', type: 'كتاب', url: '#', desc: 'شرح الفقه الشافعي', icon: '📗' },
+  { id: 3, title: 'علوم القرآن - مذكرة شاملة', type: 'مذكرة', url: '#', desc: 'مذكرة علوم القرآن', icon: '📘' },
+  { id: 4, title: 'اللغة العربية - النحو والصرف', type: 'كتاب', url: '#', desc: 'النحو والصرف', icon: '📙' },
+  { id: 5, title: 'الحديث النبوي - شرح وتخريج', type: 'كتاب', url: '#', desc: 'شرح الأحاديث', icon: '📕' },
+  { id: 6, title: 'أصول الفقه - مذكرة', type: 'مذكرة', url: '#', desc: 'مذكرة أصول الفقه', icon: '📗' },
+];
+
+const DEFAULT_EXPLAIN = [
+  { id: 1, title: 'شرح العقيدة الإسلامية - الدرس الأول', subject: 'العقيدة', url: '#', desc: 'مقدمة في العقيدة وأركان الإيمان' },
+  { id: 2, title: 'شرح الفقه الشافعي - الطهارة', subject: 'الفقه', url: '#', desc: 'أحكام الطهارة والوضوء' },
+  { id: 3, title: 'علوم القرآن - أسباب النزول', subject: 'علوم القرآن', url: '#', desc: 'أسباب النزول وأهميته' },
+  { id: 4, title: 'الحديث النبوي - مقدمة', subject: 'الحديث', url: '#', desc: 'مقدمة في علوم الحديث' },
+  { id: 5, title: 'اللغة العربية - النحو', subject: 'اللغة العربية', url: '#', desc: 'المبتدأ والخبر' },
+  { id: 6, title: 'الفكر الإسلامي المعاصر', subject: 'الفكر', url: '#', desc: 'قضايا معاصرة' },
+];
+
+const DEFAULT_RESEARCH = [
+  { id: 1, title: 'أثر العقيدة الإسلامية في بناء الشخصية', author: 'د. أحمد محمود', url: '#' },
+  { id: 2, title: 'منهج الشافعي في أصول الفقه', author: 'د. سارة علي', url: '#' },
+  { id: 3, title: 'التفسير الموضوعي وأثره في فهم القرآن', author: 'د. محمد حسن', url: '#' },
+  { id: 4, title: 'الفقه المقارن بين المذاهب الأربعة', author: 'د. فاطمة إبراهيم', url: '#' },
+  { id: 5, title: 'علوم الحديث ومصطلحاته', author: 'د. عبد الله عمر', url: '#' },
+  { id: 6, title: 'قضايا الفكر الإسلامي المعاصر', author: 'د. خالد يوسف', url: '#' },
+  { id: 7, title: 'الاجتهاد والتجديد في الفقه الإسلامي', author: 'د. نورا سعيد', url: '#' },
+  { id: 8, title: 'اللغة العربية وأثرها في فهم النصوص', author: 'د. عمر فاروق', url: '#' },
+];
+
+const DEFAULT_YEARS = [
+  { year: 'الفرقة الأولى', subjects: [
+    { name: 'العقيدة الإسلامية', url: '#' },
+    { name: 'الفقه الشافعي', url: '#' },
+    { name: 'علوم القرآن', url: '#' },
+    { name: 'اللغة العربية', url: '#' },
+    { name: 'الحديث النبوي', url: '#' },
+    { name: 'التاريخ الإسلامي', url: '#' },
+  ]},
+  { year: 'الفرقة الثانية', subjects: [
+    { name: 'أصول الفقه', url: '#' },
+    { name: 'التفسير الموضوعي', url: '#' },
+    { name: 'الفقه المقارن', url: '#' },
+    { name: 'النحو والصرف', url: '#' },
+    { name: 'علوم الحديث', url: '#' },
+    { name: 'الفرق والمذاهب', url: '#' },
+  ]},
+  { year: 'الفرقة الثالثة', subjects: [
+    { name: 'فقه المعاملات', url: '#' },
+    { name: 'تفسير آيات الأحكام', url: '#' },
+    { name: 'البلاغة العربية', url: '#' },
+    { name: 'مصطلح الحديث', url: '#' },
+    { name: 'الفكر الإسلامي', url: '#' },
+    { name: 'أصول الدين', url: '#' },
+  ]},
+  { year: 'الفرقة الرابعة', subjects: [
+    { name: 'فقه الأسرة', url: '#' },
+    { name: 'الاجتهاد والتقليد', url: '#' },
+    { name: 'مناهج المفسرين', url: '#' },
+    { name: 'مناهج المحدثين', url: '#' },
+    { name: 'الدعوة والثقافة الإسلامية', url: '#' },
+    { name: 'مشروع التخرج', url: '#' },
+  ]},
+];
+
+const DEFAULT_POSTGRAD = [
+  { icon: '🎓', title: 'ماجستير أصول الدين', desc: 'تخصص العقيدة والفلسفة الإسلامية. مدة الدراسة: سنتان.' },
+  { icon: '📜', title: 'ماجستير الفقه وأصوله', desc: 'دراسة معمقة في الفقه المقارن وأصول الفقه. مدة: سنتان.' },
+  { icon: '📖', title: 'ماجستير التفسير والحديث', desc: 'علوم القرآن والحديث النبوي الشريف. مدة: سنتان.' },
+  { icon: '🏛️', title: 'دكتوراه الدراسات الإسلامية', desc: 'برنامج بحثي متقدم في مختلف التخصصات الإسلامية.' },
+  { icon: '📋', title: 'شروط القبول', desc: 'شهادة البكالوريوس بتقدير جيد على الأقل + اجتياز المقابلة.' },
+  { icon: '📅', title: 'مواعيد التقديم', desc: 'يبدأ التقديم في يوليو من كل عام. المستندات المطلوبة متاحة.' },
+];
+
+const DEFAULT_SERVICES = [
+  { icon: '📋', title: 'شؤون الطلاب', desc: 'الاستعلام عن النتائج، التقديم للامتحانات، طلبات التحويل، واستخراج الشهادات.' },
+  { icon: '💳', title: 'المدفوعات الإلكترونية', desc: 'سداد المصروفات الدراسية إلكترونياً عبر منافذ الدفع المعتمدة.' },
+  { icon: '📧', title: 'البريد الجامعي', desc: 'تفعيل البريد الإلكتروني الجامعي للتواصل مع الأساتذة والإدارة.' },
+  { icon: '📅', title: 'الجدول الدراسي', desc: 'عرض الجداول الدراسية لكل فرقة وتخصص بشكل محدث.' },
+  { icon: '🎓', title: 'التخرج', desc: 'متطلبات التخرج، مشروع التخرج، وحفلات التخرج.' },
+  { icon: '🏥', title: 'الرعاية الصحية', desc: 'العيادات الجامعية وخدمات الدعم النفسي والاجتماعي.' },
+];
+
+/* ============ تحميل البيانات ============ */
+function loadData(key, defaultValue) {
+  const saved = localStorage.getItem(key);
+  if (saved) {
+    try { return JSON.parse(saved); } catch(e) { return defaultValue; }
+  }
+  localStorage.setItem(key, JSON.stringify(defaultValue));
+  return defaultValue;
+}
+
+function saveData(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+let books = loadData('islamic_books', DEFAULT_BOOKS);
+let explain = loadData('islamic_explain', DEFAULT_EXPLAIN);
+let research = loadData('islamic_research', DEFAULT_RESEARCH);
+let years = loadData('islamic_years', DEFAULT_YEARS);
+let postgrad = loadData('islamic_postgrad', DEFAULT_POSTGRAD);
+let services = loadData('islamic_services', DEFAULT_SERVICES);
+
+/* ============ عرض الرئيسية ============ */
+function renderHomeCards() {
+  const cards = [
+    { icon: '📚', title: 'الفرق الدراسية', desc: 'تصفح المواد الدراسية لجميع الفرق الأربعة مع المناهج الكاملة والروابط.', action: 'years' },
+    { icon: '🔬', title: 'الأبحاث العلمية', desc: 'مكتبة الأبحاث والمراجع العلمية المعتمدة مع روابط التحميل.', action: 'research' },
+    { icon: '🎓', title: 'الدراسات العليا', desc: 'برامج الماجستير والدكتوراه والمتطلبات وشروط القبول.', action: 'postgrad' },
+    { icon: '📖', title: 'المكتبة', desc: 'تحميل الكتب والمذكرات بصيغ متعددة وروابط مباشرة.', action: 'books' },
+    { icon: '🎥', title: 'قسم الشرح', desc: 'شروحات مرئية ومكتوبة لجميع المواد الدراسية.', action: 'explain' },
+    { icon: '🤖', title: 'المساعد الذكي', desc: 'اسأل عن أي شيء في المنهج والموقع على مدار الساعة.', action: 'ai' },
+  ];
+  document.getElementById('homeCards').innerHTML = cards.map(c => `
+    <div class="card">
+      <div class="card-icon">${c.icon}</div>
+      <h3>${c.title}</h3>
+      <p>${c.desc}</p>
+      <div class="card-actions">
+        <button class="btn-link" onclick="${c.action === 'ai' ? 'openAI()' : `navigateTo('${c.action}')`}">استكشف ←</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============ عرض الفرق ============ */
+function renderYears() {
+  document.getElementById('yearsGrid').innerHTML = years.map((y, i) => `
+    <div class="year-card" onclick="showYearDetails(${i})">
+      <div class="year-num">${i + 1}</div>
+      <h4>${y.year}</h4>
+      <p>${y.subjects.length} مواد دراسية</p>
+    </div>
+  `).join('');
+}
+
+function showYearDetails(index) {
+  const y = years[index];
+  const details = document.getElementById('yearDetails');
+  details.style.display = 'block';
+  details.innerHTML = `
+    <h3>📖 ${y.year} - المواد الدراسية</h3>
+    <div class="cards-grid">
+      ${y.subjects.map(s => `
+        <div class="card" style="padding:22px;">
+          <div class="card-icon" style="font-size:28px;width:55px;height:55px;">📘</div>
+          <h3 style="font-size:15px;">${s.name}</h3>
+          <p>منهج كامل + مذكرة + شرح</p>
+          <div class="card-actions">
+            ${s.url && s.url !== '#' ? `<a class="btn-link" href="${s.url}" target="_blank">📖 فتح المادة</a>` : `<button class="btn-link outline" onclick="navigateTo('admin')">➕ إضافة رابط</button>`}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/* ============ عرض الأبحاث ============ */
+function renderResearch(filter = '') {
+  const filtered = research.filter(r => r.title.includes(filter) || r.author.includes(filter));
+  document.getElementById('researchList').innerHTML = filtered.length ? filtered.map(r => `
+    <div class="list-item">
+      <div class="item-icon">📄</div>
+      <div class="item-info">
+        <h4>${r.title}</h4>
+        <p>${r.author}</p>
+      </div>
+      <div class="item-actions">
+        ${r.url && r.url !== '#' ? `<a class="btn-link" href="${r.url}" target="_blank">📖 قراءة</a>` : `<span class="btn-link outline" style="cursor:default;">لا يوجد رابط</span>`}
+      </div>
+    </div>
+  `).join('') : '<p style="text-align:center;color:var(--text-secondary);padding:30px;">لا توجد نتائج مطابقة</p>';
+}
+
+function filterResearch(val) {
+  if (val !== undefined && typeof val === 'string') {
+    document.getElementById('researchSearch').value = val;
+    renderResearch(val);
+  } else {
+    renderResearch(document.getElementById('researchSearch').value);
+  }
+}
+
+/* ============ عرض الدراسات العليا ============ */
+function renderPostgrad() {
+  document.getElementById('postgradGrid').innerHTML = postgrad.map(p => `
+    <div class="card">
+      <div class="card-icon">${p.icon}</div>
+      <h3>${p.title}</h3>
+      <p>${p.desc}</p>
+    </div>
+  `).join('');
+}
+
+/* ============ عرض الكتب ============ */
+function renderBooks(filter = '') {
+  const filtered = books.filter(b => b.title.includes(filter) || (b.desc && b.desc.includes(filter)));
+  document.getElementById('booksList').innerHTML = filtered.length ? filtered.map(b => `
+    <div class="list-item">
+      <div class="item-icon">${b.icon || '📕'}</div>
+      <div class="item-info">
+        <h4>${b.title}</h4>
+        <p>${b.type}${b.desc ? ' - ' + b.desc : ''}</p>
+      </div>
+      <div class="item-actions">
+        ${b.url && b.url !== '#' ? `<a class="btn-link" href="${b.url}" target="_blank">📖 فتح</a>` : `<span class="btn-link outline" style="cursor:default;">لا يوجد رابط</span>`}
+      </div>
+    </div>
+  `).join('') : '<p style="text-align:center;color:var(--text-secondary);padding:30px;">لا توجد نتائج مطابقة</p>';
+}
+
+function filterBooks() {
+  renderBooks(document.getElementById('bookSearch').value);
+}
+
+/* ============ عرض الشروحات ============ */
+function renderExplain() {
+  document.getElementById('explainList').innerHTML = explain.length ? explain.map(e => `
+    <div class="list-item">
+      <div class="item-icon">🎥</div>
+      <div class="item-info">
+        <h4>${e.title}</h4>
+        <p>${e.subject}${e.desc ? ' - ' + e.desc : ''}</p>
+      </div>
+      <div class="item-actions">
+        ${e.url && e.url !== '#' ? `<a class="btn-link gold" href="${e.url}" target="_blank">▶ مشاهدة</a>` : `<span class="btn-link outline" style="cursor:default;">لا يوجد رابط</span>`}
+      </div>
+    </div>
+  `).join('') : '<p style="text-align:center;color:var(--text-secondary);padding:30px;">لا توجد شروحات بعد</p>';
+}
+
+/* ============ عرض الخدمات ============ */
+function renderServices() {
+  document.getElementById('servicesGrid').innerHTML = services.map(s => `
+    <div class="info-box">
+      <h3>${s.icon} ${s.title}</h3>
+      <p>${s.desc}</p>
+    </div>
+  `).join('');
+}
+
+/* ============ نافذة الكتب العائمة ============ */
+function renderModalBooks() {
+  document.getElementById('modalBooksList').innerHTML = books.map(b => `
+    <div class="list-item">
+      <div class="item-icon">${b.icon || '📕'}</div>
+      <div class="item-info">
+        <h4>${b.title}</h4>
+        <p>${b.type}</p>
+      </div>
+      <div class="item-actions">
+        ${b.url && b.url !== '#' ? `<a class="btn-link" href="${b.url}" target="_blank">📖 فتح</a>` : `<span class="btn-link outline" style="cursor:default;">لا يوجد رابط</span>`}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ============ لوحة التحكم ============ */
+function switchAdminTab(tab) {
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('admin-' + tab).classList.add('active');
+}
+
+function renderAdminLists() {
+  // الكتب
+  document.getElementById('adminBooksList').innerHTML = books.map(b => `
+    <div class="list-item">
+      <div class="item-icon">${b.icon || '📕'}</div>
+      <div class="item-info">
+        <h4>${b.title}</h4>
+        <p>${b.type} ${b.url !== '#' ? '✓ مرتبط' : '⚠ بدون رابط'}</p>
+      </div>
+      <div class="item-actions">
+        <button class="btn-link danger" onclick="deleteBook(${b.id})">🗑 حذف</button>
+      </div>
+    </div>
+  `).join('');
+
+  // الشروحات
+  document.getElementById('adminExplainList').innerHTML = explain.map(e => `
+    <div class="list-item">
+      <div class="item-icon">🎥</div>
+      <div class="item-info">
+        <h4>${e.title}</h4>
+        <p>${e.subject}</p>
+      </div>
+      <div class="item-actions">
+        <button class="btn-link danger" onclick="deleteExplain(${e.id})">🗑 حذف</button>
+      </div>
+    </div>
+  `).join('');
+
+  // الأبحاث
+  document.getElementById('adminResearchList').innerHTML = research.map(r => `
+    <div class="list-item">
+      <div class="item-icon">📄</div>
+      <div class="item-info">
+        <h4>${r.title}</h4>
+        <p>${r.author}</p>
+      </div>
+      <div class="item-actions">
+        <button class="btn-link danger" onclick="deleteResearch(${r.id})">🗑 حذف</button>
+      </div>
+    </div>
+  `).join('');
+
+  // المواد
+  let yearsHtml = '';
+  years.forEach((y, yi) => {
+    yearsHtml += `<h5 style="color:var(--gold);margin:15px 0 10px;font-family:'Reem Kufi',sans-serif;">${y.year}</h5>`;
+    y.subjects.forEach((s, si) => {
+      yearsHtml += `
+        <div class="list-item" style="margin-bottom:8px;">
+          <div class="item-icon" style="width:40px;height:40px;font-size:20px;">📘</div>
+          <div class="item-info">
+            <h4 style="font-size:14px;">${s.name}</h4>
+            <p style="font-size:11px;">${s.url !== '#' ? '✓ مرتبط' : '⚠ بدون رابط'}</p>
+          </div>
+          <div class="item-actions">
+            <button class="btn-link danger" onclick="deleteSubject(${yi}, ${si})">🗑</button>
+          </div>
+        </div>
+      `;
+    });
+  });
+  document.getElementById('adminYearsList').innerHTML = yearsHtml;
+}
+
+/* ============ إضافة/حذف ============ */
+let nextId = () => Math.max(0, ...books.map(b=>b.id), ...explain.map(e=>e.id), ...research.map(r=>r.id)) + 1;
+
+function addBook() {
+  const title = document.getElementById('bookTitle').value.trim();
+  const url = document.getElementById('bookUrl').value.trim() || '#';
+  const type = document.getElementById('bookType').value;
+  const desc = document.getElementById('bookDesc').value.trim();
+  if (!title) { showToast('⚠ يرجى إدخال اسم الكتاب'); return; }
+  books.push({ id: Date.now(), title, url, type, desc, icon: '📕' });
+  saveData('islamic_books', books);
+  document.getElementById('bookTitle').value = '';
+  document.getElementById('bookUrl').value = '';
+  document.getElementById('bookDesc').value = '';
+  renderBooks(); renderModalBooks(); renderAdminLists();
+  showToast('✅ تمت إضافة الكتاب');
+}
+
+function deleteBook(id) {
+  if (!confirm('هل تريد حذف هذا الكتاب؟')) return;
+  books = books.filter(b => b.id !== id);
+  saveData('islamic_books', books);
+  renderBooks(); renderModalBooks(); renderAdminLists();
+  showToast('🗑 تم الحذف');
+}
+
+function addExplain() {
+  const title = document.getElementById('explainTitle').value.trim();
+  const subject = document.getElementById('explainSubject').value.trim();
+  const url = document.getElementById('explainUrl').value.trim() || '#';
+  const desc = document.getElementById('explainDesc').value.trim();
+  if (!title) { showToast('⚠ يرجى إدخال عنوان الشرح'); return; }
+  explain.push({ id: Date.now(), title, subject, url, desc });
+  saveData('islamic_explain', explain);
+  document.getElementById('explainTitle').value = '';
+  document.getElementById('explainSubject').value = '';
+  document.getElementById('explainUrl').value = '';
+  document.getElementById('explainDesc').value = '';
+  renderExplain(); renderAdminLists();
+  showToast('✅ تمت إضافة الشرح');
+}
+
+function deleteExplain(id) {
+  if (!confirm('هل تريد حذف هذا الشرح؟')) return;
+  explain = explain.filter(e => e.id !== id);
+  saveData('islamic_explain', explain);
+  renderExplain(); renderAdminLists();
+  showToast('🗑 تم الحذف');
+}
+
+function addResearch() {
+  const title = document.getElementById('researchTitle').value.trim();
+  const author = document.getElementById('researchAuthor').value.trim();
+  const url = document.getElementById('researchUrl').value.trim() || '#';
+  if (!title) { showToast('⚠ يرجى إدخال عنوان البحث'); return; }
+  research.push({ id: Date.now(), title, author: author || 'غير محدد', url });
+  saveData('islamic_research', research);
+  document.getElementById('researchTitle').value = '';
+  document.getElementById('researchAuthor').value = '';
+  document.getElementById('researchUrl').value = '';
+  renderResearch(); renderAdminLists();
+  showToast('✅ تمت إضافة البحث');
+}
+
+function deleteResearch(id) {
+  if (!confirm('هل تريد حذف هذا البحث؟')) return;
+  research = research.filter(r => r.id !== id);
+  saveData('islamic_research', research);
+  renderResearch(); renderAdminLists();
+  showToast('🗑 تم الحذف');
+}
+
+function addSubject() {
+  const yi = parseInt(document.getElementById('yearSelect').value);
+  const name = document.getElementById('subjectName').value.trim();
+  const url = document.getElementById('subjectUrl').value.trim() || '#';
+  if (!name) { showToast('⚠ يرجى إدخال اسم المادة'); return; }
+  years[yi].subjects.push({ name, url });
+  saveData('islamic_years', years);
+  document.getElementById('subjectName').value = '';
+  document.getElementById('subjectUrl').value = '';
+  renderYears(); renderAdminLists();
+  showToast('✅ تمت إضافة المادة');
+}
+
+function deleteSubject(yi, si) {
+  if (!confirm('هل تريد حذف هذه المادة؟')) return;
+  years[yi].subjects.splice(si, 1);
+  saveData('islamic_years', years);
+  renderYears(); renderAdminLists();
+  showToast('🗑 تم الحذف');
+}
+
+function resetAll() {
+  if (!confirm('سيتم حذف كل التعديلات والعودة للبيانات الافتراضية. متأكد؟')) return;
+  localStorage.removeItem('islamic_books');
+  localStorage.removeItem('islamic_explain');
+  localStorage.removeItem('islamic_research');
+  localStorage.removeItem('islamic_years');
+  location.reload();
+}
+
+/* ============ النوتس (بدون باسورد) ============ */
+function openNotes() {
+  renderNotes();
+  openModal('notesModal');
+}
+
+function renderNotes() {
+  const notes = JSON.parse(localStorage.getItem('dailyNotes') || '[]');
+  const list = document.getElementById('notesList');
+  if (!notes.length) {
+    list.innerHTML = '<p style="text-align:center;color:var(--text-secondary);font-size:13px;padding:20px;">لا توجد ملاحظات بعد. أضف ملاحظتك الأولى!</p>';
+    return;
+  }
+  list.innerHTML = notes.map((n, i) => `
+    <div class="note-card">
+      <p>${escapeHTML(n.text)}</p>
+      <div class="note-date">🕐 ${n.date}</div>
+      <button class="note-delete" onclick="deleteNote(${i})">✕</button>
+    </div>
+  `).join('');
+}
+
+function addNote() {
+  const textarea = document.getElementById('newNoteText');
+  const text = textarea.value.trim();
+  if (!text) { showToast('⚠ اكتب ملاحظتك أولاً'); return; }
+  const notes = JSON.parse(localStorage.getItem('dailyNotes') || '[]');
+  const now = new Date();
+  const date = now.toLocaleDateString('ar-EG') + ' ' + now.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+  notes.unshift({ text, date });
+  localStorage.setItem('dailyNotes', JSON.stringify(notes));
+  textarea.value = '';
+  renderNotes();
+  showToast('✅ تمت إضافة الملاحظة');
+}
+
+function deleteNote(i) {
+  const notes = JSON.parse(localStorage.getItem('dailyNotes') || '[]');
+  notes.splice(i, 1);
+  localStorage.setItem('dailyNotes', JSON.stringify(notes));
+  renderNotes();
+}
+
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+/* ============ AI ============ */
+function openAI() {
+  openModal('aiModal');
+  setTimeout(() => document.getElementById('aiInput').focus(), 300);
+}
+
+const knowledgeBase = [
+  { keywords: ['عقيدة', 'أركان الإيمان'], answer: 'العقيدة الإسلامية هي الإيمان بالله وملائكته وكتبه ورسله واليوم الآخر والقدر خيره وشره. تدرس في الفرقة الأولى.' },
+  { keywords: ['فقه', 'شافعي', 'مقارن'], answer: 'الفقه الشافعي في الفرقة الأولى، والفقه المقارن في الثانية، وفقه المعاملات في الثالثة، وفقه الأسرة في الرابعة.' },
+  { keywords: ['قرآن', 'تفسير'], answer: 'علوم القرآن في الفرقة الأولى، التفسير الموضوعي في الثانية، تفسير آيات الأحكام في الثالثة، مناهج المفسرين في الرابعة.' },
+  { keywords: ['حديث', 'مصطلح'], answer: 'الحديث النبوي في الفرقة الأولى، علوم الحديث في الثانية، مصطلح الحديث في الثالثة، مناهج المحدثين في الرابعة.' },
+  { keywords: ['لغة', 'نحو', 'صرف', 'بلاغة'], answer: 'اللغة العربية تدرس على مدار الفرق الأربعة: النحو والصرف، البلاغة، وغيرها.' },
+  { keywords: ['أصول'], answer: 'أصول الفقه في الفرقة الثانية، والاجتهاد والتقليد في الرابعة.' },
+  { keywords: ['دراسات عليا', 'ماجستير', 'دكتوراه'], answer: 'برامج الدراسات العليا: ماجستير أصول الدين، ماجستير الفقه وأصوله، ماجستير التفسير والحديث، ودكتوراه الدراسات الإسلامية.' },
+  { keywords: ['تسجيل', 'قبول'], answer: 'شروط القبول للدراسات العليا: بكالوريوس بتقدير جيد + اجتياز المقابلة. التقديم يبدأ في يوليو.' },
+  { keywords: ['بحث', 'أبحاث'], answer: 'مكتبة الأبحاث تضم أبحاثاً في العقيدة والفقه والتفسير والحديث والفكر الإسلامي. يمكنك تصفحها من قسم الأبحاث.' },
+  { keywords: ['كتاب', 'كتب', 'مكتبة'], answer: 'المكتبة تحتوي على كتب ومذكرات لجميع المواد. تصفحها من قسم المكتبة أو الأيقونة العائمة 📚.' },
+  { keywords: ['شرح', 'شروحات'], answer: 'قسم الشرح يقدم شروحات مرئية ومكتوبة لجميع المواد. يمكنك إضافتها من لوحة التحكم.' },
+  { keywords: ['سلام', 'مرحبا', 'أهلا'], answer: 'وعليكم السلام ورحمة الله وبركاته! أهلاً بك. كيف يمكنني مساعدتك؟' },
+];
+
+function getAIResponse(q) {
+  q = q.toLowerCase().trim();
+  for (const item of knowledgeBase) {
+    for (const kw of item.keywords) {
+      if (q.includes(kw)) return item.answer;
+    }
+  }
+  return 'لم أجد إجابة محددة. يمكنك السؤال عن: المواد الدراسية (عقيدة، فقه، تفسير، حديث، لغة عربية)، الأبحاث، الكتب، الدراسات العليا، أو خدمات الكلية.';
+}
+
+function sendAI() {
+  const input = document.getElementById('aiInput');
+  const msg = input.value.trim();
+  if (!msg) return;
+  const chat = document.getElementById('aiChat');
+  chat.innerHTML += `<div class="ai-msg user">${escapeHTML(msg)}</div>`;
+  input.value = '';
+  chat.scrollTop = chat.scrollHeight;
+  setTimeout(() => {
+    const response = getAIResponse(msg);
+    chat.innerHTML += `<div class="ai-msg bot">${response}</div>`;
+    chat.scrollTop = chat.scrollHeight;
+  }, 400);
+}
+
+/* ============ Modals ============ */
+function openModal(id) {
+  document.getElementById(id).classList.add('open');
+  if (id === 'booksModal') renderModalBooks();
+}
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(o => {
+  o.addEventListener('click', function(e) { if (e.target === this) this.classList.remove('open'); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => m.classList.remove('open'));
+});
+
+/* ============ Toast ============ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+/* ============ تهيئة ============ */
+function init() {
+  renderHomeCards();
+  renderYears();
+  renderResearch();
+  renderPostgrad();
+  renderBooks();
+  renderExplain();
+  renderServices();
+  renderModalBooks();
+}
+init();
+</script>
+</body>
+</html>
